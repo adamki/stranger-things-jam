@@ -7,6 +7,7 @@ import {
   Sampler,
   Synth,
   Reverb,
+  LFO
 } from '../src';
 
 import Polysynth from './polysynth';
@@ -44,13 +45,21 @@ export default class Demo extends Component {
             <Sequencer resolution={8} bars={8} >
               <Sampler
                 sample="/samples/kick.wav"
-                steps={[0, 1, 8, 9, 16, 17, 24, 25, 32, 33, 40, 41, 48, 49, 56, 57]}
+                steps={[0, 1, 3, 8, 9, 10, 16, 17, 19, 24, 25, 27, 32, 33, 35, 40, 41, 43, 48, 49, 51, 56, 57, 59]}
               />
-              <Reverb>
+              <Sampler
+                sample="/samples/snare.wav"
+                steps={[4, 12, 20, 28, 36, 44, 52]}
+              />
+              <Sampler
+                sample="/samples/hihat.wav"
+                steps={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, , 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ,54 ,55, 56, 57, 58, 59, 60, 61, 62, 63, 64]}
+              />
+              <Reverb wetLevel={1}>
                 <Synth
                   type="sine"
                   steps={[
-                    [0, 16, "c6"],
+                    [0, 32, "c6"],
 
                     [0, 2, "c3"],
                     [1, 2, "e3"],
@@ -128,8 +137,16 @@ export default class Demo extends Component {
                 <Synth
                   type="sawtooth"
                   steps={[
-                    [0, 8, "c2"],
-                    [32, 4, "c2"],
+                    [0, 2, "c2"],
+                    [1, 2, "c2"],
+                    [7, 2, "c2"],
+                    [8, 2, "c2"],
+                    [15, 2, "c2"],
+                    [16, 2, "c2"],
+                    [23, 2, "c2"],
+                    [24, 2, "c2"],
+                    [31, 2, "c2"],
+                    [32, 2, "c2"],
                     [36, 4, "d2"],
                     [40, 16, "e2", "e1"],
                     [52, 8, "e2"],
@@ -148,7 +165,7 @@ export default class Demo extends Component {
           type="button"
           onClick={this.handlePlayToggle}
         >
-          {this.state.playing ? 'Stop' : 'Play'}
+          {this.state.playing ? 'lame' : 'lit'}
         </button>
       </div>
     );
